@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10141f" />
+    <meta name="description" content="간결하고 정확한 웹 스톱워치" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2310141f'/%3E%3Ccircle cx='32' cy='36' r='18' fill='none' stroke='%23ffb84d' stroke-width='5'/%3E%3Cpath d='M26 10h12M32 10v8M45 21l5-5' stroke='%23ffb84d' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M32 36V25M32 36l8 6' stroke='%23f7f8fa' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>스톱워치</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true"><span></span></div>
+        <div>
+          <p class="eyebrow">FOCUS TIMER</p>
+          <h1>스톱워치</h1>
+        </div>
+        <div class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">준비됨</span></div>
+      </header>
+
+      <section class="timer-card" aria-label="스톱워치">
+        <div class="timer-glow"></div>
+        <div class="orbit-track" aria-hidden="true">
+          <div class="orbit-ring orbit-hours"><span id="orbitHours">🧘</span></div>
+          <div class="orbit-ring orbit-minutes"><span id="orbitMinutes">🧘</span></div>
+          <div class="orbit-ring orbit-seconds"><span id="orbitSeconds">🧘</span></div>
+        </div>
+        <p class="timer-label">ELAPSED TIME</p>
+        <div class="time" id="time" aria-live="polite">00:00<span>.00</span></div>
+        <div class="controls">
+          <button class="control secondary" id="resetBtn" type="button">초기화</button>
+          <button class="control primary" id="startBtn" type="button"><span class="play-icon" aria-hidden="true"></span><span id="startLabel">시작</span></button>
+          <button class="control secondary" id="lapBtn" type="button" disabled>랩 기록</button>
+        </div>
+        <p class="shortcut-hint">스페이스바 시작/일시정지&nbsp; · &nbsp;L 랩 기록&nbsp; · &nbsp;R 초기화</p>
+      </section>
+
+      <section class="runner-board" aria-label="시간 단위별 캐릭터">
+        <div class="runner-card resting" id="hoursRunner">
+          <div class="runner-copy"><span class="unit-kicker">HOURS</span><strong id="hoursValue">00</strong><span class="runner-state" id="hoursState">휴식 중</span></div>
+          <div class="track"><span class="track-line"></span><span class="runner" id="hoursCharacter" aria-hidden="true">🧘</span></div>
+        </div>
+        <div class="runner-card resting" id="minutesRunner">
+          <div class="runner-copy"><span class="unit-kicker">MINUTES</span><strong id="minutesValue">00</strong><span class="runner-state" id="minutesState">휴식 중</span></div>
+          <div class="track"><span class="track-line"></span><span class="runner" id="minutesCharacter" aria-hidden="true">🧘</span></div>
+        </div>
+        <div class="runner-card resting" id="secondsRunner">
+          <div class="runner-copy"><span class="unit-kicker">SECONDS</span><strong id="secondsValue">00</strong><span class="runner-state" id="secondsState">휴식 중</span></div>
+          <div class="track"><span class="track-line"></span><span class="runner" id="secondsCharacter" aria-hidden="true">🧘</span></div>
+        </div>
+      </section>
+
+      <section class="laps-section" aria-labelledby="lapsHeading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SPLITS</p>
+            <h2 id="lapsHeading">랩 기록</h2>
+          </div>
+          <span class="lap-count" id="lapCount">0개</span>
+        </div>
+        <div class="laps-table-wrap">
+          <table>
+            <thead><tr><th scope="col">번호</th><th scope="col">랩 타임</th><th scope="col">누적 시간</th></tr></thead>
+            <tbody id="lapsBody"><tr class="empty-row"><td colspan="3"><div class="empty-state"><span class="empty-icon">＋</span><span>스톱워치를 시작하고 랩을 기록해 보세요</span></div></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer><span>정확한 순간을 기록하세요.</span><span class="footer-mark">●</span></footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
